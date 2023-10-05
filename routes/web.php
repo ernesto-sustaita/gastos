@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\MovimientoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('cuentas', CuentasController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('movimientos', MovimientoController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
