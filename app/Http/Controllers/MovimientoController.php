@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cuenta;
 use App\Models\Movimiento;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class MovimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(): View
     {
-        return response('Hello, World!');
+        return view('movimientos.index', [
+            'cuentas' => Cuenta::with('user')->latest()->get(),
+        ]);
     }
 
     /**

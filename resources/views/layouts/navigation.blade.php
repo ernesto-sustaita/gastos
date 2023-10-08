@@ -15,8 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('cuentas.index')" :active="request()->routeIs('chirps.index')">
+                    <x-nav-link :href="route('cuentas.index')" :active="request()->routeIs('cuentas.index')">
                         {{ __('Cuentas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('movimientos.index')" :active="request()->routeIs('movimientos.index')">
+                        {{ __('Movimientos') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -73,8 +76,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('cuentas.index')" :active="request()->routeIs('chirps.index')">
+            <x-responsive-nav-link :href="route('cuentas.index')" :active="request()->routeIs('cuentas.index')">
                 {{ __('Cuentas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('movimientos.index')" :active="request()->routeIs('movimientos.index')">
+                {{ __('Movimientos') }}
             </x-responsive-nav-link>
         </div>
 
