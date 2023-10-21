@@ -48,6 +48,13 @@
                     <td>{{ $cuenta->tipo }}</td>
                     <td>{{ $cuenta->fecha_corte }}</td>
                 </tr>
+                @foreach ($cuenta->movimientos as $movimiento)
+                    <tr>
+                        <td>{{ $movimiento->tipo }}</td>
+                        <td>{{ $movimiento->cantidad }}</td>
+                        <td>{{ $movimiento->fecha }}</td>
+                    </tr>
+                @endforeach
             @endforeach
                 </tbody>
             </table>

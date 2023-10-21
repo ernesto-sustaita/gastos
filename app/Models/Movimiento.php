@@ -10,6 +10,13 @@ class Movimiento extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'cuenta_id',
+        'cantidad',
+        'tipo',
+        'fecha'
+    ];
+
     public function cuenta(): BelongsTo
     {
         return $this->belongsTo(Cuenta::class);

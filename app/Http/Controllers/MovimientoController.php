@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cuenta;
 use App\Models\Movimiento;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -15,7 +16,7 @@ class MovimientoController extends Controller
     public function index(): View
     {
         return view('movimientos.index', [
-            'cuentas' => Cuenta::with('user')->latest()->get(),
+            'cuentas' => Cuenta::with('user')->with('movimientos')->latest()->get(),
         ]);
     }
 
@@ -30,9 +31,18 @@ class MovimientoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'cuenta_id' => 'required|numeric',
+            'cantidad' => 'required|numeric',
+            'tipo' => 'required|string|max:255',
+            'fecha' => 'required|date'
+        ]);
+
+        Movimiento::create($validated);
+
+        return redirect(route('movimientos.index'))->with('success', 'Post created successfully.');
     }
 
     /**
