@@ -42,20 +42,33 @@
                     </tr>
                 </thead>
                 <tbody>
-            @foreach ($cuentas as $cuenta)
-                <tr>
-                    <td>{{ $cuenta->nombre }}</td>
-                    <td>{{ $cuenta->tipo }}</td>
-                    <td>{{ $cuenta->fecha_corte }}</td>
-                </tr>
-                @foreach ($cuenta->movimientos as $movimiento)
-                    <tr>
-                        <td>{{ $movimiento->tipo }}</td>
-                        <td>{{ $movimiento->cantidad }}</td>
-                        <td>{{ $movimiento->fecha }}</td>
-                    </tr>
-                @endforeach
-            @endforeach
+                    @foreach ($cuentas as $cuenta)
+                        <tr>
+                            <td>{{ $cuenta->nombre }}</td>
+                            <td>{{ $cuenta->tipo }}</td>
+                            <td>{{ $cuenta->fecha_corte }}</td>
+                        </tr>
+                        @if (count($cuenta->movimientos) > 0)
+                            <table style="margin-left: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th>Movimiento</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cuenta->movimientos as $movimiento)
+                                        <tr>
+                                            <td>{{ $movimiento->tipo }}</td>
+                                            <td>{{ $movimiento->cantidad }}</td>
+                                            <td>{{ $movimiento->fecha }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>
