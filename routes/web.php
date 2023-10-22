@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('cuentas', CuentasController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'create'])
     ->middleware(['auth', 'verified']);
 
 Route::resource('movimientos', MovimientoController::class)

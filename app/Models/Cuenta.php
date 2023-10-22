@@ -14,6 +14,7 @@ class Cuenta extends Model
     protected $fillable = [
         'nombre',
         'tipo',
+        'fecha_corte'
     ];
 
     public function user(): BelongsTo

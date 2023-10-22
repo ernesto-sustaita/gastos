@@ -22,9 +22,9 @@ class CuentasController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('cuentas.create');
     }
 
     /**
@@ -35,6 +35,7 @@ class CuentasController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'tipo' => 'required|string|max:255',
+            'fecha_corte' => 'date'
         ]);
 
         $request->user()->cuentas()->create($validated);
