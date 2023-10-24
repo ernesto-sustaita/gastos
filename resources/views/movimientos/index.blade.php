@@ -21,24 +21,28 @@
                             <td>{{ $cuenta->fecha_corte }}</td>
                         </tr>
                         @if (count($cuenta->movimientos) > 0)
-                            <table style="margin-left: 10px;">
-                                <thead>
-                                    <tr>
-                                        <th>Movimiento</th>
-                                        <th>Cantidad</th>
-                                        <th>Fecha</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($cuenta->movimientos as $movimiento)
+                        <tr>
+                            <td colspan="3">
+                                <table class="ml-6 p-4 sm:p-6 lg:p-8">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $movimiento->tipo }}</td>
-                                            <td>{{ $movimiento->cantidad }}</td>
-                                            <td>{{ $movimiento->fecha }}</td>
+                                            <th>Movimiento</th>
+                                            <th>Cantidad</th>
+                                            <th>Fecha</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($cuenta->movimientos as $movimiento)
+                                            <tr>
+                                                <td>{{ $movimiento->tipo }}</td>
+                                                <td>{{ $movimiento->cantidad }}</td>
+                                                <td>{{ $movimiento->fecha }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>    
                         @endif
                     @endforeach
                 </tbody>
