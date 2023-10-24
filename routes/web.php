@@ -29,7 +29,7 @@ Route::resource('cuentas', CuentasController::class)
     ->middleware(['auth', 'verified']);
 
 Route::resource('movimientos', MovimientoController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'create'])
     ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

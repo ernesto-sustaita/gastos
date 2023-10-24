@@ -23,9 +23,11 @@ class MovimientoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('movimientos.create', [
+            'cuentas' => Cuenta::with('user')->with('movimientos')->latest()->get(),
+        ]);
     }
 
     /**
