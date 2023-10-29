@@ -19,6 +19,19 @@
                 <option value="egreso">Egreso</option>
             </select>
             @csrf
+            <select 
+                name="categoria"
+                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <option disabled="disabled" selected="selected">Seleccionar categoria de movimiento</option>
+                <option value="despensa">Despensa</option>
+                <option value="luz">Luz</option>
+                <option value="celular">Celular</option>
+                <option value="renta">Renta</option>
+                <option value="michis">Michis</option>
+                <option value="diversion">Diversión</option>
+                <option value="restaurantes">Restaurantes</option>
+            </select>
+            @csrf
             <input type="number"
                 step="0.1"
                 name="cantidad"

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('cuenta_id')->constrained()->cascadeOnDelete();
             $table->float('cantidad');
             $table->string('tipo');
+            $table->string('categoria');
             $table->date('fecha');
             $table->timestamps();
         });
