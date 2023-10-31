@@ -39,12 +39,13 @@ class MovimientoController extends Controller
             'cuenta_id' => 'required|numeric',
             'cantidad' => 'required|numeric',
             'tipo' => 'required|string|max:255',
+            'categoria' => 'required|string|max:255',
             'fecha' => 'required|date'
         ]);
 
         Movimiento::create($validated);
 
-        return redirect(route('movimientos.index'))->with('success', 'Post created successfully.');
+        return redirect(route('movimientos.index'))->with('success', 'Movimiento creado.');
     }
 
     /**

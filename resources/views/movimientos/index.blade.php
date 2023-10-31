@@ -28,6 +28,7 @@
                                         <tr>
                                             <th>Movimiento</th>
                                             <th>Cantidad</th>
+                                            <th>Categoría</th>
                                             <th>Fecha</th>
                                         </tr>
                                     </thead>
@@ -36,6 +37,7 @@
                                             <tr>
                                                 <td>{{ $movimiento->tipo }}</td>
                                                 <td>{{ $movimiento->cantidad }}</td>
+                                                <td>{{ $movimiento->categoria }}</td>
                                                 <td>{{ $movimiento->fecha }}</td>
                                             </tr>
                                         @endforeach
