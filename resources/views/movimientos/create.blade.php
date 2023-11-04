@@ -2,10 +2,21 @@
     <h1 class="mx-auto p-4 sm:p-6 lg:p-8">Agregar nuevo movimiento</h1>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
         <form method="POST" action="{{ route('movimientos.store') }}">
+            <span>Movimiento </span> 
+            <input type="radio" name="movimiento_cuentas" id="unacuenta" checked="checked" onchange="cambiarCantidadCuentas()"> <label for="unacuenta"> en una sola cuenta</label>
+            <input type="radio" name="movimiento_cuentas" id="entrecuentas" onchange="cambiarCantidadCuentas()"> <label for="entrecuentas"> entre cuentas</label>
+            @csrf
+            <select name="cuenta_origen_id" style="display: none;"
+                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <option disabled="disabled" selected="selected">Seleccionar cuenta origen</option>
+                @foreach ($cuentas as $cuenta)
+                    <option value="{{ $cuenta->id }}">{{ $cuenta->nombre }} - {{ $cuenta->tipo }}</option>
+                @endforeach
+            </select>
             @csrf
             <select name="cuenta_id"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                <option disabled="disabled" selected="selected">Seleccionar cuenta</option>
+                <option disabled="disabled" selected="selected">Seleccionar cuenta destino</option>
                 @foreach ($cuentas as $cuenta)
                     <option value="{{ $cuenta->id }}">{{ $cuenta->nombre }} - {{ $cuenta->tipo }}</option>
                 @endforeach
@@ -47,3 +58,13 @@
         </form>
     </div>
 </x-app-layout>
+<script>
+    function cambiarCantidadCuentas(){
+        if(document.getElementById('unacuenta').checked) {
+            document.getElementsByName('cuenta_origen_id')[0].style.display = 'none';
+            document.getElementsByName('cuenta_origen_id')[0].options[0].selected = true;
+        } else {
+            document.getElementsByName('cuenta_origen_id')[0].style.display = 'block';
+        }
+    }
+</script>

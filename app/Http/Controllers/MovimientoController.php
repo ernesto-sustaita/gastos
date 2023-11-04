@@ -43,7 +43,15 @@ class MovimientoController extends Controller
             'fecha' => 'required|date'
         ]);
 
+        $cuentaOrigen = $request->input('cuenta_origen_id');
+
         Movimiento::create($validated);
+
+        if($cuentaOrigen != '') {
+            $validated['cuenta_id'] = $cuentaOrigen;
+            $validated['tipo'] = 'egreso';
+            Movimiento::create($validated);
+        }
 
         return redirect(route('movimientos.index'))->with('success', 'Movimiento creado.');
     }

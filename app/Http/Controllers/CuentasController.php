@@ -35,7 +35,7 @@ class CuentasController extends Controller
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
             'tipo' => 'required|string|max:255',
-            'fecha_corte' => 'date'
+            'fecha_corte' => 'nullable|date'
         ]);
 
         $request->user()->cuentas()->create($validated);
